@@ -2,7 +2,7 @@ import React from 'react';
 
 const User = props => {
     return (
-        <div>
+        <div className="user-profile">
             <h3>Welcome {props.user.displayName}</h3>
             <img 
                 src={props.user.photoURL} 

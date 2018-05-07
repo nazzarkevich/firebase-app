@@ -5,6 +5,7 @@ import { auth } from './firebase';
 import SignIn from './components/SignIn/SignIn';
 import SignOut from './components/SignOut/SignOut';
 import User from './components/User/User';
+import Order from './components/Order/Order';
 
 class App extends Component {
   constructor(props) {
@@ -28,10 +29,10 @@ class App extends Component {
       <div className="App">
         <h1>Firebase test-app</h1>
         {!this.state.currentUser && <SignIn />}
-        {this.state.currentUser 
-        && 
+        {this.state.currentUser && 
           <div>
             <User user={this.state.currentUser}/>
+            <Order />            
             <SignOut />
           </div>}
       </div>
