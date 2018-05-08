@@ -6,13 +6,17 @@ import SignIn from './components/SignIn/SignIn';
 import SignOut from './components/SignOut/SignOut';
 import User from './components/User/User';
 import Order from './components/Order/Order';
+import { database } from './firebase';
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      currentUser: null
+      currentUser: null,
+      orders: null
     }
+
+    this.ordersRef = database.ref('/orders');
 }
 
   componentDidMount() {
@@ -20,6 +24,11 @@ class App extends Component {
       console.log('AUTH', currentUser)
       this.setState({
         currentUser: currentUser
+      });
+      this.ordersRef.on('value', snapshot => {
+        this.setState({
+          orders: snapshot.val()
+        });
       });
     });
   }

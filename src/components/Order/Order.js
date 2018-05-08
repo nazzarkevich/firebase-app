@@ -33,27 +33,36 @@ class Order extends Component {
                     <label className="posting-title">
                         <h4>Post title</h4>
                         <input
+                            required
                             value={postTitle} 
-                            onChange={e => this.setState({postTitle: e.target.value })} 
+                            onChange={e => this.setState({postTitle: e.target.value })}
                             type="text"/>
                     </label>
     
                     <label className="post-price">
                         <h4>price $</h4>
                         <input
+                            required
                             value={postPrice} 
+                            onChange={e => this.setState({postPrice: e.target.value })}                            
                             type="text"/>                    
                     </label>
                     <label className="post-desc">
                         <h4>Posting description</h4>
-                        <textarea 
+                        <textarea
+                            required
                             value={postDesc}
+                            onChange={e => this.setState({postDesc: e.target.value })}                            
                             name="post-desc" 
                             id="post-desc" 
                             cols="30" 
                             rows="10"/>
                     </label>
-                    <button type="submit" onSubmit={this.handleSubmit}>create add</button>
+                    <button 
+                        disabled={!postTitle} 
+                        type="submit" 
+                        onClick={this.handleSubmit}
+                    >create add</button>
                 </form>
             </div>
         );
